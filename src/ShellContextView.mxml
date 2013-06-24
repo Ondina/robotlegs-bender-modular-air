@@ -22,11 +22,11 @@
             //============================================================================
             // create the Robotlegs Context
             //============================================================================
-            private var shellContext:ShellContext;
+            private var _robotlegsContext:ShellContext;
 
             private function preinitializeHandler(event:FlexEvent):void
             {
-                shellContext = new ShellContext(this);
+                _robotlegsContext = new ShellContext(this);
             }
         ]]>
     </fx:Script>

@@ -12,7 +12,7 @@
 
             import mx.events.FlexEvent;
 
-            private var _robotlegsConfig:ModuleAContext;
+            private var _robotlegsContext:ModuleAContext;
 
             private var _viewID:String;
 
@@ -26,7 +26,7 @@
                 messagesView.init("Module_A");
                 viewID = messagesView.viewID;
 
-                _robotlegsConfig = new ModuleAContext(this);
+                _robotlegsContext = new ModuleAContext(this);
             }
 
             //============================================================================

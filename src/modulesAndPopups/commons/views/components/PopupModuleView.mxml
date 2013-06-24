@@ -3,6 +3,7 @@
                xmlns:s="library://ns.adobe.com/flex/spark"
                xmlns:mx="library://ns.adobe.com/flex/mx"
                chromeColor="#E4E4E8"
+               windowMoving="titlewindow_moveHandler(event)"
                close="closePopHandler(event)"
                dropShadowVisible="false">
     <fx:Script>
@@ -40,7 +41,7 @@
             //============================================================================
             // KEEP POPUP ON SCREEN
             //============================================================================
-            private function titlewindow1_moveHandler(event:TitleWindowBoundsEvent):void
+            private function titlewindow_moveHandler(event:TitleWindowBoundsEvent):void
             {
                 if (event.afterBounds.left < 0)
                 {

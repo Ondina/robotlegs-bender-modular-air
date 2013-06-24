@@ -15,17 +15,17 @@
             }
         ]]>
     </fx:Script>
-    <s:Button x="10"
-              y="10"
+    <s:Button x="0"
+              y="8"
               label="diagram 1"
               id="diagram1Button"
               click="diagram1Button_clickHandler(event)"/>
-    <s:Button x="117"
-              y="10"
+    <s:Button x="107"
+              y="8"
               label="diagram 2"
               id="diagram2Button"
               click="diagram2Button_clickHandler(event)"/>
     <s:Image id="diagramImage"
              x="10"
-             y="37"/>
+             y="39"/>
 </s:Group>

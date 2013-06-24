@@ -40,9 +40,7 @@ package modulesAndPopups.shell.views.mediators
         {
             var viewID:String = "ModuleLoader" + "_" + generateUID();
 
-            var titleWindowInstance:PopupModuleView = new PopupModuleView();
-            titleWindowInstance.width = 270;
-            titleWindowInstance.height = 250;
+            var titleWindowInstance:PopupModuleView = new PopupModuleView();            
             titleWindowInstance.x = 10;
             titleWindowInstance.y = 40;
             titleWindowInstance.viewID = viewID;
@@ -51,9 +49,7 @@ package modulesAndPopups.shell.views.mediators
             //============================================================================
             // popup's child
             //============================================================================
-            var moduleLoaderView:ModulesLoaderView = new ModulesLoaderView();
-            moduleLoaderView.x = 10;
-            moduleLoaderView.y = 10;
+            var moduleLoaderView:ModulesLoaderView = new ModulesLoaderView();            
             moduleLoaderView.id = viewID;
 
             //============================================================================
@@ -72,9 +68,7 @@ package modulesAndPopups.shell.views.mediators
         {
             var viewID:String = "Diagram" + "_" + generateUID();
 
-            var titleWindowInstance:PopupModuleView = new PopupModuleView();
-            titleWindowInstance.width = 900;
-            titleWindowInstance.height = 500;
+            var titleWindowInstance:PopupModuleView = new PopupModuleView();          
             titleWindowInstance.x = 10;
             titleWindowInstance.y = 40;
             titleWindowInstance.viewID = viewID;
@@ -83,9 +77,7 @@ package modulesAndPopups.shell.views.mediators
             //============================================================================
             // popup's child
             //============================================================================
-            var diagramsView:DiagramsView = new DiagramsView();
-            diagramsView.x = 2;
-            diagramsView.y = 2;
+            var diagramsView:DiagramsView = new DiagramsView();          
             diagramsView.id = viewID;
 
             //============================================================================
@@ -95,6 +87,6 @@ package modulesAndPopups.shell.views.mediators
             viewManager.addContainer(titleWindowInstance);
             titleWindowInstance.addElement(diagramsView);
             PopUpManager.addPopUp(titleWindowInstance, FlexGlobals.topLevelApplication as DisplayObject);
-        }
+        }				
     }
 }
