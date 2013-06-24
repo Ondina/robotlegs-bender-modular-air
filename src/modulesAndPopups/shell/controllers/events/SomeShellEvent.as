@@ -9,12 +9,12 @@ package modulesAndPopups.shell.controllers.events
         public static const LOAD_MODULE_IN_POPUP:String = "loadModuleInPopup";
 
         public static const LOAD_SIMPLE_MODULE:String = "loadSimpleModule";
-		
-		public static const LOAD_DIAGRAM_POPUP:String = "loadDiagramPopup";
+
+        public static const LOAD_DIAGRAM_POPUP:String = "loadDiagramPopup";
 
         public static const UNLOAD_SIMPLE_MODULE:String = "unloadSimpleModule";
 
-        public static const SIMPLE_MODULE_UNLOADED:String = "simpleModuleUnloaded";
+        //public static const SIMPLE_MODULE_UNLOADED:String = "simpleModuleUnloaded";
 
         private var _moduleLoaderVO:ModuleLoaderVO;
 

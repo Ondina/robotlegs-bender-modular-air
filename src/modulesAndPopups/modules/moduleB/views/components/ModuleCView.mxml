@@ -23,8 +23,10 @@
             private function creationCompleteHandler(event:FlexEvent):void
             {
                 removeEventListener(FlexEvent.CREATION_COMPLETE, creationCompleteHandler);
+
                 messagesView.init("Module_C");
                 viewID = messagesView.viewID;
+
                 _robotlegsConfig = new ModuleBOrCContext(this);
             }
 

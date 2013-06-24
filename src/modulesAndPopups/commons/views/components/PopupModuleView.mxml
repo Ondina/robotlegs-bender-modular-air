@@ -9,7 +9,7 @@
         <![CDATA[
             import mx.events.CloseEvent;
             import mx.managers.PopUpManager;
-            
+
             import spark.events.TitleWindowBoundsEvent;
 
             private var _viewID:String;

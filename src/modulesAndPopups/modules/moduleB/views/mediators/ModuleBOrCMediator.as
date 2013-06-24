@@ -17,7 +17,7 @@ package modulesAndPopups.modules.moduleB.views.mediators
             addContextListener(ModularConnectorEvent.B_TO_A_MESSAGE, onMessageReceived, ModularConnectorEvent);
             addContextListener(ModularConnectorEvent.A_TO_B_MESSAGE, onMessageReceived, ModularConnectorEvent);
 
-           // addContextListener(ModularConnectorEvent.INTER_INSTANCES_MESSAGE, onMessageReceived, ModularConnectorEvent);
+            // addContextListener(ModularConnectorEvent.INTER_INSTANCES_MESSAGE, onMessageReceived, ModularConnectorEvent);
             addContextListener(ModularConnectorEvent.SHELL_TO_MODULES_MESSAGE, onMessageReceived, ModularConnectorEvent);
         }
 

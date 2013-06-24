@@ -11,7 +11,7 @@ package modulesAndPopups.shell.views.mediators
         public var view:ShellLoaderView;
 
         override public function initialize():void
-        {			
+        {
             addViewListener(ModularConnectorEvent.VIEW_TO_MEDIATOR_MESSAGE, onMessageSent, ModularConnectorEvent);
 
             addContextListener(ModularConnectorEvent.A_TO_B_MESSAGE, onMessageReceived, ModularConnectorEvent);

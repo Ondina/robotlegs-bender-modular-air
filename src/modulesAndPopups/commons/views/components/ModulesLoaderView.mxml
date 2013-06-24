@@ -29,6 +29,7 @@
                 moduleLoader.addEventListener(ModuleEvent.ERROR, onModuleError);
                 moduleLoader.addEventListener(ModuleEvent.UNLOAD, onModuleUnloaded);
                 moduleLoader.url = payload.moduleURL;
+
                 addElement(moduleLoader);
             }
 

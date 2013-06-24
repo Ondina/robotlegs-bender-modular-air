@@ -26,8 +26,9 @@
             public function sendMessageButton_clickHandler(event:MouseEvent):void
             {
                 var _messagesVO:MessagesVO = new MessagesVO();
-                _messagesVO.message = sendMessagesInput.text + "- from " + viewID;
+                _messagesVO.message = sendMessagesInput.text + " - from " + viewID;
                 _messagesVO.viewID = viewID;
+
                 dispatchEvent(new ModularConnectorEvent(ModularConnectorEvent.VIEW_TO_MEDIATOR_MESSAGE, _messagesVO));
             }
 

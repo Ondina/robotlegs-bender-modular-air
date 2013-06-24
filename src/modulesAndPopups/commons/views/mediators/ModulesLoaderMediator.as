@@ -12,11 +12,9 @@ package modulesAndPopups.commons.views.mediators
 
         override public function initialize():void
         {
-            addViewListener(SomeShellEvent.SIMPLE_MODULE_UNLOADED, dispatch, SomeShellEvent);
-
             addContextListener(SomeShellEvent.LOAD_SIMPLE_MODULE, onLoadingModule, SomeShellEvent);
-
             addContextListener(SomeShellEvent.UNLOAD_SIMPLE_MODULE, onUnloadingModule, SomeShellEvent);
+            //addViewListener(SomeShellEvent.SIMPLE_MODULE_UNLOADED, dispatch, SomeShellEvent);
         }
 
         private function onUnloadingModule(event:SomeShellEvent):void

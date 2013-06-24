@@ -13,21 +13,21 @@ package modulesAndPopups.modules.moduleB.configs
         public function configure():void
         {
             trace("ModuleConnectorConfig.configure() ModuleB");
-			//============================================================================
-			// MODULE B LISTENS onDefaultChannel for Shell's event
-			//============================================================================
+            //============================================================================
+            // MODULE B LISTENS onDefaultChannel for Shell's event
+            //============================================================================
             moduleConnector.onDefaultChannel()
                 .receiveEvent(ModularConnectorEvent.SHELL_TO_MODULES_MESSAGE);
-			
-			//============================================================================
-			// MODULE B dispatches on 'A-and-B' channel  
-			//============================================================================
+
+            //============================================================================
+            // MODULE B dispatches on 'A-and-B' channel
+            //============================================================================
             moduleConnector.onChannel('A-and-B')
                 .relayEvent(ModularConnectorEvent.B_TO_A_MESSAGE);
-			
-			//============================================================================
-			// MODULE B LISTENS on 'A-and-B' channel for ModuleA's event
-			//============================================================================
+
+            //============================================================================
+            // MODULE B LISTENS on 'A-and-B' channel for ModuleA's event
+            //============================================================================
             moduleConnector.onChannel('A-and-B')
                 .receiveEvent(ModularConnectorEvent.A_TO_B_MESSAGE);
         }

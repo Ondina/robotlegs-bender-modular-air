@@ -25,6 +25,7 @@
 
                 messagesView.init("Module_B");
                 viewID = messagesView.viewID;
+
                 _robotlegsConfig = new ModuleBOrCContext(this);
             }
 

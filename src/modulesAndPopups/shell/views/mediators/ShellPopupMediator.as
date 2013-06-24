@@ -26,14 +26,16 @@ package modulesAndPopups.shell.views.mediators
         override public function initialize():void
         {
             addViewListener(SomeShellEvent.LOAD_DIAGRAM_POPUP, onLoadDiagramInPopup, SomeShellEvent);
-            addViewListener(SomeShellEvent.LOAD_SIMPLE_MODULE, dispatch, SomeShellEvent);
+
             addViewListener(SomeShellEvent.LOAD_MODULE_IN_POPUP, onLoadModuleInPopup, SomeShellEvent);
+
+            addViewListener(SomeShellEvent.LOAD_SIMPLE_MODULE, dispatch, SomeShellEvent);
             addViewListener(SomeShellEvent.UNLOAD_SIMPLE_MODULE, dispatch, SomeShellEvent);
         }
 
-		//============================================================================
-		// LOAD A MODULE IN A POPUP WINDOW
-		//============================================================================
+        //============================================================================
+        // LOAD A MODULE IN A POPUP WINDOW
+        //============================================================================
         private function onLoadModuleInPopup(event:SomeShellEvent):void
         {
             var viewID:String = "ModuleLoader" + "_" + generateUID();
@@ -56,43 +58,43 @@ package modulesAndPopups.shell.views.mediators
 
             //============================================================================
             // Add the titleWindowInstance to the viewManager BEFORE
-            // adding childrent to it and BEFORE popping it up
+            // adding children to it and BEFORE popping it up
             //============================================================================
             viewManager.addContainer(titleWindowInstance);
             titleWindowInstance.addElement(moduleLoaderView);
             PopUpManager.addPopUp(titleWindowInstance, FlexGlobals.topLevelApplication as DisplayObject);
         }
-		
-		//============================================================================
-		// DIAGRAMS IN A POPUP - duplicate code !!
-		//============================================================================
-		private function onLoadDiagramInPopup(event:SomeShellEvent):void
-		{
-			var viewID:String = "Diagram" + "_" + generateUID();
-			
-			var titleWindowInstance:PopupModuleView = new PopupModuleView();
-			titleWindowInstance.width = 900;
-			titleWindowInstance.height = 500;
-			titleWindowInstance.x = 10;
-			titleWindowInstance.y = 40;
-			titleWindowInstance.viewID = viewID;
-			titleWindowInstance.title = "Diagrams";
-			
-			//============================================================================
-			// popup's child
-			//============================================================================
-			var diagramsView:DiagramsView = new DiagramsView();
-			diagramsView.x = 2;
-			diagramsView.y = 2;
-			diagramsView.id = viewID;
-			
-			//============================================================================
-			// Add the titleWindowInstance to the viewManager BEFORE
-			// adding childrent to it and BEFORE popping it up
-			//============================================================================
-			viewManager.addContainer(titleWindowInstance);
-			titleWindowInstance.addElement(diagramsView);
-			PopUpManager.addPopUp(titleWindowInstance, FlexGlobals.topLevelApplication as DisplayObject);
-		}      
+
+        //============================================================================
+        // DIAGRAMS IN A POPUP - duplicate code == bad!!
+        //============================================================================
+        private function onLoadDiagramInPopup(event:SomeShellEvent):void
+        {
+            var viewID:String = "Diagram" + "_" + generateUID();
+
+            var titleWindowInstance:PopupModuleView = new PopupModuleView();
+            titleWindowInstance.width = 900;
+            titleWindowInstance.height = 500;
+            titleWindowInstance.x = 10;
+            titleWindowInstance.y = 40;
+            titleWindowInstance.viewID = viewID;
+            titleWindowInstance.title = "Diagrams";
+
+            //============================================================================
+            // popup's child
+            //============================================================================
+            var diagramsView:DiagramsView = new DiagramsView();
+            diagramsView.x = 2;
+            diagramsView.y = 2;
+            diagramsView.id = viewID;
+
+            //============================================================================
+            // Add the titleWindowInstance to the viewManager BEFORE
+            // adding children to it and BEFORE popping it up
+            //============================================================================
+            viewManager.addContainer(titleWindowInstance);
+            titleWindowInstance.addElement(diagramsView);
+            PopUpManager.addPopUp(titleWindowInstance, FlexGlobals.topLevelApplication as DisplayObject);
+        }
     }
 }

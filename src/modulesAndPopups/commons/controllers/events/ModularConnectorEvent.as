@@ -11,8 +11,6 @@ package modulesAndPopups.commons.controllers.events
         public static const A_TO_B_MESSAGE:String = "aToBMessage";
         public static const B_TO_A_MESSAGE:String = "bToAMessage";
 
-       // public static const INTER_INSTANCES_MESSAGE:String = "interInstancesMessage";
-
         public static const VIEW_TO_MEDIATOR_MESSAGE:String = "viewToMediatorMessage";
 
         private var _messagesVO:MessagesVO;

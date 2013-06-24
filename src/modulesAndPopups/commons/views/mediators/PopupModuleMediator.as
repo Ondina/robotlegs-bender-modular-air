@@ -3,7 +3,7 @@ package modulesAndPopups.commons.views.mediators
     import modulesAndPopups.commons.models.vos.ModuleLoaderVO;
     import modulesAndPopups.commons.views.components.PopupModuleView;
     import modulesAndPopups.shell.controllers.events.SomeShellEvent;
-    
+
     import robotlegs.bender.bundles.mvcs.Mediator;
     import robotlegs.bender.extensions.viewManager.api.IViewManager;
 

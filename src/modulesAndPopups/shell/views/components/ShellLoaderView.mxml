@@ -14,7 +14,7 @@
             private var moduleLoaderVO:ModuleLoaderVO = new ModuleLoaderVO();
 
             //============================================================================
-            // INIT MESSAGE VIEW & ADD EVENT LISTENERS
+            // INIT MESSAGES VIEW & ADD EVENT LISTENERS
             //============================================================================
             private function creationCompleteHandler(event:FlexEvent):void
             {
@@ -75,10 +75,10 @@
             {
                 messagesView.onMessageReceived(value);
             }
-			
-			//============================================================================
-			// MODULE CONECTOR CONFIG DIAGRAMS
-			//============================================================================
+
+            //============================================================================
+            // MODULE CONECTOR CONFIG DIAGRAMS
+            //============================================================================
             protected function loadDiagramButton_clickHandler(event:MouseEvent):void
             {
                 dispatchEvent(new SomeShellEvent(SomeShellEvent.LOAD_DIAGRAM_POPUP));
