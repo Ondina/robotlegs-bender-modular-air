@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
+                   xmlns:s="library://ns.adobe.com/flex/spark"
+                   xmlns:mx="library://ns.adobe.com/flex/mx"
+                   width="250"
+                   height="190">
+    <fx:Script>
+        <![CDATA[
+            import modulesAndPopups.commons.controllers.events.ModularConnectorEvent;
+            import modulesAndPopups.commons.models.vos.MessagesVO;
+
+            import modulesAndPopups.commons.utils.generateUID;
+
+            private var _viewID:String;
+
+            public function init(viewPrefix:String):void
+            {
+                sendMessageButton.addEventListener(MouseEvent.CLICK, sendMessageButton_clickHandler);
+                viewID = viewPrefix + "_" + generateUID();
+                messageID.text = viewID;
+            }
+
+            //============================================================================
+            // MESSAGE SENT
+            //============================================================================
+            public function sendMessageButton_clickHandler(event:MouseEvent):void
+            {
+                var _messagesVO:MessagesVO = new MessagesVO();
+                _messagesVO.message = sendMessagesInput.text + "- from " + viewID;
+                _messagesVO.viewID = viewID;
+                dispatchEvent(new ModularConnectorEvent(ModularConnectorEvent.VIEW_TO_MEDIATOR_MESSAGE, _messagesVO));
+            }
+
+            //============================================================================
+            // MESSAGE RECEIVED
+            //============================================================================
+            public function onMessageReceived(value:String):void
+            {
+                receivedMessagesInput.text = value;
+            }
+
+            //============================================================================
+            // VIEW ID
+            //============================================================================
+            public function set viewID(value:String):void
+            {
+                _viewID = value;
+            }
+
+            public function get viewID():String
+            {
+                return _viewID;
+            }
+
+            //============================================================================
+            // CLEAN UP
+            //============================================================================
+            private function removedFromStageHandler(event:Event):void
+            {
+                removeAllElements();
+                removeEventListener(Event.REMOVED_FROM_STAGE, removedFromStageHandler);
+                sendMessageButton.removeEventListener(MouseEvent.CLICK, sendMessageButton_clickHandler);
+            }
+        ]]>
+    </fx:Script>
+    <s:layout>
+        <s:BasicLayout/>
+    </s:layout>
+    <s:Label id="messageID"
+             x="10"
+             y="10"
+             fontWeight="bold"/>
+    <s:TextArea id="sendMessagesInput"
+                x="10"
+                y="33"
+                width="230"
+                height="50"/>
+    <s:Button id="sendMessageButton"
+              x="10"
+              y="88"
+              label="send message"/>
+    <s:Label x="10"
+             y="120"
+             text="received:"/>
+    <s:TextArea id="receivedMessagesInput"
+                x="10"
+                y="134"
+                width="230"
+                height="50"/>
+</s:BorderContainer>

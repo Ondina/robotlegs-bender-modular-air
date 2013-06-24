@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:TitleWindow xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx"
+               chromeColor="#E4E4E8"
+               close="closePopHandler(event)"
+               dropShadowVisible="false">
+    <fx:Script>
+        <![CDATA[
+            import mx.events.CloseEvent;
+            import mx.managers.PopUpManager;
+            
+            import spark.events.TitleWindowBoundsEvent;
+
+            private var _viewID:String;
+
+            //============================================================================
+            // CLOSE POPUP
+            //============================================================================
+            public function closePopHandler(event:Event = null):void
+            {
+                removeEventListener(CloseEvent.CLOSE, closePopHandler);
+
+                PopUpManager.removePopUp(this);
+            }
+
+            //============================================================================
+            // VIEW NAME
+            //============================================================================
+            public function set viewID(value:String):void
+            {
+                _viewID = value;
+            }
+
+            public function get viewID():String
+            {
+                return _viewID;
+            }
+
+            //============================================================================
+            // KEEP POPUP ON SCREEN
+            //============================================================================
+            private function titlewindow1_moveHandler(event:TitleWindowBoundsEvent):void
+            {
+                if (event.afterBounds.left < 0)
+                {
+                    event.afterBounds.left = 0;
+                }
+                else if (event.afterBounds.right > systemManager.stage.stageWidth)
+                {
+                    event.afterBounds.left = systemManager.stage.stageWidth - event.afterBounds.width;
+                }
+                if (event.afterBounds.top < 0)
+                {
+                    event.afterBounds.top = 0;
+                }
+                else if (event.afterBounds.bottom > systemManager.stage.stageHeight)
+                {
+                    event.afterBounds.top = systemManager.stage.stageHeight - event.afterBounds.height;
+                }
+            }
+        ]]>
+    </fx:Script>
+</s:TitleWindow>

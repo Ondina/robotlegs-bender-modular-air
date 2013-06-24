@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:mx="library://ns.adobe.com/flex/mx"
+         removedFromStage="removedFromStageHandler(event)">
+    <fx:Script>
+        <![CDATA[
+            import modulesAndPopups.commons.models.vos.ModuleLoaderVO;
+            import modulesAndPopups.shell.controllers.events.SomeShellEvent;
+
+            import mx.events.ModuleEvent;
+
+            import spark.modules.ModuleLoader;
+
+            private var moduleLoader:ModuleLoader;
+
+            //============================================================================
+            // LOAD MODULE
+            //============================================================================
+            public function onLoadingModule(payload:ModuleLoaderVO):void
+            {
+                if (this.id != payload.moduleLoaderID)
+                    return;
+
+                var moduleLoaderVO:ModuleLoaderVO = new ModuleLoaderVO();
+                moduleLoaderVO.moduleLoaderID = payload.moduleLoaderID;
+
+                moduleLoader = new ModuleLoader();
+                moduleLoader.addEventListener(ModuleEvent.ERROR, onModuleError);
+                moduleLoader.addEventListener(ModuleEvent.UNLOAD, onModuleUnloaded);
+                moduleLoader.url = payload.moduleURL;
+                addElement(moduleLoader);
+            }
+
+            //============================================================================
+            // UNLOAD MODULE
+            //============================================================================
+            public function onUnloadingModule(payload:ModuleLoaderVO):void
+            {
+                if (this.id != payload.moduleLoaderID || !moduleLoader)
+                    return;
+                moduleLoader.unloadModule();
+            }
+
+            //============================================================================
+            // MODULE UNLOADED
+            //============================================================================
+            private function onModuleUnloaded(event:ModuleEvent):void
+            {
+                moduleLoader.removeEventListener(ModuleEvent.ERROR, onModuleError);
+                moduleLoader.removeEventListener(ModuleEvent.UNLOAD, onModuleUnloaded);
+                removeAllElements();
+                moduleLoader.child = null;
+                moduleLoader = null;
+            }
+
+            //============================================================================
+            // MODULE ERROR
+            //============================================================================
+            private function onModuleError(event:ModuleEvent):void
+            {
+                trace("onModuleError(event) " + event.errorText);
+            }
+
+            //============================================================================
+            // CLEAN UP
+            //============================================================================
+            private function removedFromStageHandler(event:Event):void
+            {
+                removeAllElements();
+                removeEventListener(Event.ADDED_TO_STAGE, removedFromStageHandler);
+            }
+        ]]>
+    </fx:Script>
+</s:Group>

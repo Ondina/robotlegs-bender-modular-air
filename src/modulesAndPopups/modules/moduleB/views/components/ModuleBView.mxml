@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Module xmlns:fx="http://ns.adobe.com/mxml/2009"
+          xmlns:s="library://ns.adobe.com/flex/spark"
+          xmlns:mx="library://ns.adobe.com/flex/mx"
+          xmlns:components="modulesAndPopups.commons.views.components.*"
+          creationComplete="creationCompleteHandler(event)"
+          removedFromStage="removedFromStageHandler(event)"
+          implements="modulesAndPopups.commons.views.components.IModuleView">
+    <fx:Script>
+        <![CDATA[
+            import modulesAndPopups.modules.moduleB.configs.ModuleBOrCContext;
+
+            import mx.events.FlexEvent;
+
+            private var _robotlegsConfig:ModuleBOrCContext;
+
+            private var _viewID:String;
+
+            //============================================================================
+            // INITIALIZE MODULE'S CONTEXT
+            //============================================================================
+            private function creationCompleteHandler(event:FlexEvent):void
+            {
+                removeEventListener(FlexEvent.CREATION_COMPLETE, creationCompleteHandler);
+
+                messagesView.init("Module_B");
+                viewID = messagesView.viewID;
+                _robotlegsConfig = new ModuleBOrCContext(this);
+            }
+
+            //============================================================================
+            // MESSAGE RECEIVED
+            //============================================================================
+            public function onMessageReceived(value:String):void
+            {
+                messagesView.onMessageReceived(value);
+            }
+
+            //============================================================================
+            // VIEW NAME
+            //============================================================================
+            public function set viewID(value:String):void
+            {
+                _viewID = value;
+            }
+
+            public function get viewID():String
+            {
+                return _viewID;
+            }
+
+            //============================================================================
+            // CLEAN UP
+            //============================================================================
+            private function removedFromStageHandler(event:Event):void
+            {
+                removeAllElements();
+                removeEventListener(Event.REMOVED_FROM_STAGE, removedFromStageHandler);
+            }
+        ]]>
+    </fx:Script>
+    <components:MessagesView id="messagesView"/>
+</s:Module>

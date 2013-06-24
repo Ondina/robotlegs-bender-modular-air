@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Button xmlns:fx="http://ns.adobe.com/mxml/2009"
+          xmlns:s="library://ns.adobe.com/flex/spark"
+          xmlns:mx="library://ns.adobe.com/flex/mx"
+          label="{labelDefault}"
+          label.remove="{labelOtherState}"
+          width.load="164"
+          height.load="21"
+          width.remove="164"
+          height.remove="21">
+    <s:states>
+        <s:State name="load"/>
+        <s:State name="remove"/>
+    </s:states>
+
+    <fx:Script>
+        <![CDATA[
+            private var _someButtonState:String;
+            private var _labelDefault:String;
+            private var _labelOtherState:String;
+
+            [Bindable]
+            public function get labelOtherState():String
+            {
+                return _labelOtherState;
+            }
+
+            public function set labelOtherState(value:String):void
+            {
+                _labelOtherState = value;
+            }
+
+            [Bindable]
+            public function get labelDefault():String
+            {
+                return _labelDefault;
+            }
+
+            public function set labelDefault(value:String):void
+            {
+                _labelDefault = value;
+            }
+
+            public function get someButtonState():String
+            {
+                return _someButtonState;
+            }
+
+            public function set someButtonState(value:String):void
+            {
+                _someButtonState = value;
+            }
+
+            public function switchStates():void
+            {
+                if (currentState == "load")
+                    currentState = "remove"
+                else
+                    currentState = "load"
+            }
+        ]]>
+    </fx:Script>
+</s:Button>

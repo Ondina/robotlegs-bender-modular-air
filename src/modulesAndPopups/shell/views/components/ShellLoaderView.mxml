@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:mx="library://ns.adobe.com/flex/mx"
+         xmlns:components="modulesAndPopups.commons.views.components.*"
+         creationComplete="creationCompleteHandler(event)">
+    <fx:Script>
+        <![CDATA[
+            import modulesAndPopups.commons.models.vos.ModuleLoaderVO;
+            import modulesAndPopups.shell.controllers.events.SomeShellEvent;
+
+            import mx.events.FlexEvent;
+
+            private var moduleLoaderVO:ModuleLoaderVO = new ModuleLoaderVO();
+
+            //============================================================================
+            // INIT MESSAGE VIEW & ADD EVENT LISTENERS
+            //============================================================================
+            private function creationCompleteHandler(event:FlexEvent):void
+            {
+                messagesView.init("Shell");
+
+                loadModuleInPopupButton.addEventListener(MouseEvent.CLICK, loadModuleInPopupButton_clickHandler);
+                loadModuleBButton.addEventListener(MouseEvent.CLICK, loadRemoveButton_clickHandler);
+                loadModuleAButton.addEventListener(MouseEvent.CLICK, loadRemoveButton_clickHandler);
+                loadDiagramButton.addEventListener(MouseEvent.CLICK, loadDiagramButton_clickHandler);
+            }
+
+            //============================================================================
+            // LOAD MODULE IN POPUP REQUEST
+            //============================================================================
+            private function loadModuleInPopupButton_clickHandler(event:MouseEvent):void
+            {
+                dispatchEvent(new SomeShellEvent(SomeShellEvent.LOAD_MODULE_IN_POPUP));
+            }
+
+            //============================================================================
+            // LOAD SIMPLE MODULES REQUEST
+            //============================================================================
+            private function loadRemoveButton_clickHandler(event:MouseEvent):void
+            {
+                setModuleVO(event.currentTarget.id);
+                if (event.currentTarget.currentState == "load")
+                {
+                    dispatchEvent(new SomeShellEvent(SomeShellEvent.LOAD_SIMPLE_MODULE, moduleLoaderVO));
+                }
+                else
+                {
+                    dispatchEvent(new SomeShellEvent(SomeShellEvent.UNLOAD_SIMPLE_MODULE, moduleLoaderVO));
+                }
+                event.currentTarget.switchStates();
+            }
+
+            //============================================================================
+            // MODULES LOADER VO
+            //============================================================================
+            private function setModuleVO(value:String):void
+            {
+                if (value == "loadModuleAButton")
+                {
+                    moduleLoaderVO.moduleLoaderID = moduleALoader.id;
+                    moduleLoaderVO.moduleURL = "modulesAndPopups/modules/moduleA/views/components/ModuleAView.swf";
+                }
+                else
+                {
+                    moduleLoaderVO.moduleLoaderID = moduleBLoader.id;
+                    moduleLoaderVO.moduleURL = "modulesAndPopups/modules/moduleB/views/components/ModuleBView.swf";
+                }
+            }
+
+            //============================================================================
+            // MESSAGE RECEIVED
+            //============================================================================
+            public function onMessageReceived(value:String):void
+            {
+                messagesView.onMessageReceived(value);
+            }
+			
+			//============================================================================
+			// MODULE CONECTOR CONFIG DIAGRAMS
+			//============================================================================
+            protected function loadDiagramButton_clickHandler(event:MouseEvent):void
+            {
+                dispatchEvent(new SomeShellEvent(SomeShellEvent.LOAD_DIAGRAM_POPUP));
+            }
+        ]]>
+    </fx:Script>
+    <s:Button id="loadModuleInPopupButton"
+              x="10"
+              y="10"
+              label="load module in popup"/>
+    <s:Group x="371"
+             y="0"
+             height="501">
+        <components:ButtonWithStates id="loadModuleBButton"
+                                     x="336"
+                                     y="10"
+                                     labelDefault="load Module_B"
+                                     labelOtherState="remove Module_B"/>
+        <components:ModulesLoaderView id="moduleBLoader"
+                                      x="336"
+                                      y="40"/>
+        <components:ButtonWithStates id="loadModuleAButton"
+                                     x="0"
+                                     y="10"
+                                     labelDefault="load Module_A"
+                                     labelOtherState="remove Module_A"/>
+        <components:ModulesLoaderView id="moduleALoader"
+                                      x="0"
+                                      y="40"/>
+        <components:MessagesView id="messagesView"
+                                 x="125"
+                                 y="272"/>
+    </s:Group>
+    <s:Button id="loadDiagramButton"
+              x="10"
+              y="470"
+              label="diagrams"/>
+</s:Group>
