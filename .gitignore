@@ -1,34 +1,11 @@
-/.settings/*
-/html-template/*
-/bin-debug/*
-/bin-release/*
-/bin/*
-/docs/*
-/doc/*
-/obj/*
-/report/*
-/reports/*
-/target/*
-/dist/*
-/target
-/lib/asunit3/*
+# Build and Release Folders
+bin/
+bin-debug/
+bin-release/
 
-.actionScriptProperties
-.flexProperties
-.flexLibProperties
-.FlexUnitSettings
-.project
-.sourceMate
-.fxpProperties
+# Other files and folders
+.settings/
 
-user.properties
-Icon
-Thumbs.db
-.DS_Store
-
-src/FlexUnitApplication.mxml
-
-.idea
-*.iml
-*.ipr
-*.iws
+# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
+# should NOT be excluded as they contain compiler settings and other important
+# information for Eclipse / Flash Builder.

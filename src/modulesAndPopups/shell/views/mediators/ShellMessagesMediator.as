@@ -2,13 +2,13 @@ package modulesAndPopups.shell.views.mediators
 {
     import modulesAndPopups.commons.controllers.events.ModularConnectorEvent;
     import modulesAndPopups.shell.views.components.ShellMessagesView;
-    
+
     import robotlegs.bender.bundles.mvcs.Mediator;
 
     public class ShellMessagesMediator extends Mediator
     {
         [Inject]
-        public var view:ShellMessagesView; 
+        public var view:ShellMessagesView;
 
         override public function initialize():void
         {
