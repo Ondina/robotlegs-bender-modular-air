@@ -1,17 +1,17 @@
 package modulesAndPopups.shell.views.mediators
 {
     import flash.display.DisplayObject;
-    
+
     import modulesAndPopups.commons.controllers.events.ModulesLoaderEvent;
     import modulesAndPopups.commons.utils.generateUID;
     import modulesAndPopups.commons.views.components.DiagramsView;
     import modulesAndPopups.commons.views.components.ModulesLoaderView;
     import modulesAndPopups.commons.views.components.PopupModuleView;
     import modulesAndPopups.shell.views.components.ModulesCenterView;
-    
+
     import mx.core.FlexGlobals;
     import mx.managers.PopUpManager;
-    
+
     import robotlegs.bender.bundles.mvcs.Mediator;
     import robotlegs.bender.extensions.viewManager.api.IViewManager;
 
@@ -40,7 +40,7 @@ package modulesAndPopups.shell.views.mediators
         {
             var viewID:String = "ModuleLoader" + "_" + generateUID();
 
-            var titleWindowInstance:PopupModuleView = new PopupModuleView();            
+            var titleWindowInstance:PopupModuleView = new PopupModuleView();
             titleWindowInstance.x = 10;
             titleWindowInstance.y = 40;
             titleWindowInstance.viewID = viewID;
@@ -49,7 +49,7 @@ package modulesAndPopups.shell.views.mediators
             //============================================================================
             // popup's child
             //============================================================================
-            var moduleLoaderView:ModulesLoaderView = new ModulesLoaderView();            
+            var moduleLoaderView:ModulesLoaderView = new ModulesLoaderView();
             moduleLoaderView.id = viewID;
 
             //============================================================================
@@ -68,7 +68,7 @@ package modulesAndPopups.shell.views.mediators
         {
             var viewID:String = "Diagram" + "_" + generateUID();
 
-            var titleWindowInstance:PopupModuleView = new PopupModuleView();          
+            var titleWindowInstance:PopupModuleView = new PopupModuleView();
             titleWindowInstance.x = 10;
             titleWindowInstance.y = 40;
             titleWindowInstance.viewID = viewID;
@@ -77,7 +77,7 @@ package modulesAndPopups.shell.views.mediators
             //============================================================================
             // popup's child
             //============================================================================
-            var diagramsView:DiagramsView = new DiagramsView();          
+            var diagramsView:DiagramsView = new DiagramsView();
             diagramsView.id = viewID;
 
             //============================================================================
@@ -87,6 +87,6 @@ package modulesAndPopups.shell.views.mediators
             viewManager.addContainer(titleWindowInstance);
             titleWindowInstance.addElement(diagramsView);
             PopUpManager.addPopUp(titleWindowInstance, FlexGlobals.topLevelApplication as DisplayObject);
-        }			
+        }
     }
 }
