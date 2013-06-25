@@ -8,11 +8,11 @@
           implements="modulesAndPopups.commons.views.components.IModuleView">
     <fx:Script>
         <![CDATA[
-            import modulesAndPopups.modules.moduleB.configs.ModuleBOrCContext;
+            import modulesAndPopups.modules.moduleB.configs.ModuleBContext;
 
             import mx.events.FlexEvent;
 
-            private var _robotlegsContext:ModuleBOrCContext;
+            private var _robotlegsContext:ModuleBContext;
 
             private var _viewID:String;
 
@@ -26,7 +26,7 @@
                 messagesView.init("Module_B");
                 viewID = messagesView.viewID;
 
-                _robotlegsContext = new ModuleBOrCContext(this);
+                _robotlegsContext = new ModuleBContext(this);
             }
 
             //============================================================================

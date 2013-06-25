@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:s="library://ns.adobe.com/flex/spark"
+         xmlns:mx="library://ns.adobe.com/flex/mx"
+         xmlns:components="modulesAndPopups.commons.views.components.*"
+         creationComplete="creationCompleteHandler(event)">
+    <fx:Script>
+        <![CDATA[
+            import modulesAndPopups.commons.controllers.events.ModulesLoaderEvent;
+            import mx.events.FlexEvent;
+
+            //============================================================================
+            // INIT MESSAGES VIEW
+            //============================================================================
+            private function creationCompleteHandler(event:FlexEvent):void
+            {
+                messagesView.init("Shell");
+            }
+
+            //============================================================================
+            // MESSAGE RECEIVED
+            //============================================================================
+            public function onMessageReceived(value:String):void
+            {
+                messagesView.onMessageReceived(value);
+            }
+        ]]>
+    </fx:Script>
+    <components:MessagesView id="messagesView"
+                             x="0"
+                             y="0"/>
+</s:Group>

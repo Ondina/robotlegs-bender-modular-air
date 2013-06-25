@@ -15,7 +15,6 @@
 
     <fx:Script>
         <![CDATA[
-            private var _someButtonState:String;
             private var _labelDefault:String;
             private var _labelOtherState:String;
 
@@ -39,16 +38,6 @@
             public function set labelDefault(value:String):void
             {
                 _labelDefault = value;
-            }
-
-            public function get someButtonState():String
-            {
-                return _someButtonState;
-            }
-
-            public function set someButtonState(value:String):void
-            {
-                _someButtonState = value;
             }
 
             public function switchStates():void

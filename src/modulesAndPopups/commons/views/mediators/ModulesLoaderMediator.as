@@ -1,7 +1,7 @@
 package modulesAndPopups.commons.views.mediators
 {
     import modulesAndPopups.commons.views.components.ModulesLoaderView;
-    import modulesAndPopups.shell.controllers.events.SomeShellEvent;
+    import modulesAndPopups.commons.controllers.events.ModulesLoaderEvent;
 
     import robotlegs.bender.bundles.mvcs.Mediator;
 
@@ -12,18 +12,18 @@ package modulesAndPopups.commons.views.mediators
 
         override public function initialize():void
         {
-            addContextListener(SomeShellEvent.LOAD_SIMPLE_MODULE, onLoadingModule, SomeShellEvent);
-            addContextListener(SomeShellEvent.UNLOAD_SIMPLE_MODULE, onUnloadingModule, SomeShellEvent);
+            addContextListener(ModulesLoaderEvent.LOAD_SIMPLE_MODULE, onLoadingModule, ModulesLoaderEvent);
+            addContextListener(ModulesLoaderEvent.UNLOAD_SIMPLE_MODULE, onUnloadingModule, ModulesLoaderEvent);
             //addViewListener(SomeShellEvent.SIMPLE_MODULE_UNLOADED, dispatch, SomeShellEvent);
         }
 
-        private function onUnloadingModule(event:SomeShellEvent):void
+        private function onUnloadingModule(event:ModulesLoaderEvent):void
         {
             if (view.id == event.moduleLoaderVO.moduleLoaderID)
                 view.onUnloadingModule(event.moduleLoaderVO);
         }
 
-        private function onLoadingModule(event:SomeShellEvent):void
+        private function onLoadingModule(event:ModulesLoaderEvent):void
         {
             view.onLoadingModule(event.moduleLoaderVO);
         }

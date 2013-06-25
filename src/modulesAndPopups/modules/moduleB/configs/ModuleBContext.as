@@ -7,11 +7,11 @@ package modulesAndPopups.modules.moduleB.configs
     import robotlegs.bender.framework.api.IContext;
     import robotlegs.bender.framework.impl.Context;
 
-    public class ModuleBOrCContext
+    public class ModuleBContext
     {
         private var context:IContext;
 
-        public function ModuleBOrCContext(rootDisplayObject:DisplayObjectContainer)
+        public function ModuleBContext(rootDisplayObject:DisplayObjectContainer)
         {
             trace("ModuleBContext");
             context = new Context()

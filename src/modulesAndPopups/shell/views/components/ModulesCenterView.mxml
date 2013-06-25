@@ -6,8 +6,8 @@
          creationComplete="creationCompleteHandler(event)">
     <fx:Script>
         <![CDATA[
+            import modulesAndPopups.commons.controllers.events.ModulesLoaderEvent;
             import modulesAndPopups.commons.models.vos.ModuleLoaderVO;
-            import modulesAndPopups.shell.controllers.events.SomeShellEvent;
 
             import mx.events.FlexEvent;
 
@@ -18,11 +18,9 @@
             //============================================================================
             private function creationCompleteHandler(event:FlexEvent):void
             {
-                messagesView.init("Shell");
-
                 loadModuleInPopupButton.addEventListener(MouseEvent.CLICK, loadModuleInPopupButton_clickHandler);
-                loadModuleBButton.addEventListener(MouseEvent.CLICK, loadRemoveButton_clickHandler);
-                loadModuleAButton.addEventListener(MouseEvent.CLICK, loadRemoveButton_clickHandler);
+                loadModuleBButton.addEventListener(MouseEvent.CLICK, loadRemoveModuleButton_clickHandler);
+                loadModuleAButton.addEventListener(MouseEvent.CLICK, loadRemoveModuleButton_clickHandler);
                 loadDiagramButton.addEventListener(MouseEvent.CLICK, loadDiagramButton_clickHandler);
             }
 
@@ -31,22 +29,22 @@
             //============================================================================
             private function loadModuleInPopupButton_clickHandler(event:MouseEvent):void
             {
-                dispatchEvent(new SomeShellEvent(SomeShellEvent.LOAD_MODULE_IN_POPUP));
+                dispatchEvent(new ModulesLoaderEvent(ModulesLoaderEvent.LOAD_MODULE_IN_POPUP));
             }
 
             //============================================================================
             // LOAD SIMPLE MODULES REQUEST
             //============================================================================
-            private function loadRemoveButton_clickHandler(event:MouseEvent):void
+            private function loadRemoveModuleButton_clickHandler(event:MouseEvent):void
             {
                 setModuleVO(event.currentTarget.id);
                 if (event.currentTarget.currentState == "load")
                 {
-                    dispatchEvent(new SomeShellEvent(SomeShellEvent.LOAD_SIMPLE_MODULE, moduleLoaderVO));
+                    dispatchEvent(new ModulesLoaderEvent(ModulesLoaderEvent.LOAD_SIMPLE_MODULE, moduleLoaderVO));
                 }
                 else
                 {
-                    dispatchEvent(new SomeShellEvent(SomeShellEvent.UNLOAD_SIMPLE_MODULE, moduleLoaderVO));
+                    dispatchEvent(new ModulesLoaderEvent(ModulesLoaderEvent.UNLOAD_SIMPLE_MODULE, moduleLoaderVO));
                 }
                 event.currentTarget.switchStates();
             }
@@ -69,19 +67,11 @@
             }
 
             //============================================================================
-            // MESSAGE RECEIVED
-            //============================================================================
-            public function onMessageReceived(value:String):void
-            {
-                messagesView.onMessageReceived(value);
-            }
-
-            //============================================================================
             // MODULE CONECTOR CONFIG DIAGRAMS
             //============================================================================
             protected function loadDiagramButton_clickHandler(event:MouseEvent):void
             {
-                dispatchEvent(new SomeShellEvent(SomeShellEvent.LOAD_DIAGRAM_POPUP));
+                dispatchEvent(new ModulesLoaderEvent(ModulesLoaderEvent.LOAD_DIAGRAM_POPUP));
             }
         ]]>
     </fx:Script>
@@ -89,9 +79,8 @@
               x="10"
               y="10"
               label="load module in popup"/>
-    <s:Group x="371"
-             y="0"
-             height="501">
+    <s:Group x="345"
+             y="0">
         <components:ButtonWithStates id="loadModuleBButton"
                                      x="336"
                                      y="10"
@@ -108,12 +97,9 @@
         <components:ModulesLoaderView id="moduleALoader"
                                       x="0"
                                       y="40"/>
-        <components:MessagesView id="messagesView"
-                                 x="125"
-                                 y="272"/>
     </s:Group>
     <s:Button id="loadDiagramButton"
-              x="10"
-              y="470"
+              x="9"
+              y="547"
               label="diagrams"/>
 </s:Group>

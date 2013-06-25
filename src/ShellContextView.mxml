@@ -30,5 +30,7 @@
             }
         ]]>
     </fx:Script>
-    <components:ShellLoaderView/>
+    <components:ModulesCenterView/>
+    <components:ShellMessagesView x="495"
+                                  y="325"/>
 </s:WindowedApplication>

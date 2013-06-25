@@ -9,11 +9,11 @@
     <fx:Script>
         <![CDATA[
             import modulesAndPopups.commons.controllers.events.ModularConnectorEvent;
-            import modulesAndPopups.modules.moduleB.configs.ModuleBOrCContext;
+            import modulesAndPopups.modules.moduleB.configs.ModuleBContext;
 
             import mx.events.FlexEvent;
 
-            private var _robotlegsContext:ModuleBOrCContext;
+            private var _robotlegsContext:ModuleBContext;
 
             private var _viewID:String;
 
@@ -27,7 +27,7 @@
                 messagesView.init("Module_C");
                 viewID = messagesView.viewID;
 
-                _robotlegsContext = new ModuleBOrCContext(this);
+                _robotlegsContext = new ModuleBContext(this);
             }
 
             //============================================================================

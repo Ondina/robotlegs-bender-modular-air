@@ -5,7 +5,7 @@ package modulesAndPopups.modules.moduleB.views.mediators
 
     import robotlegs.bender.bundles.mvcs.Mediator;
 
-    public class ModuleBOrCMediator extends Mediator
+    public class ModuleBMediator extends Mediator
     {
         [Inject]
         public var view:IModuleView;

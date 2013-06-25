@@ -1,42 +1,42 @@
 package modulesAndPopups.shell.views.mediators
 {
     import flash.display.DisplayObject;
-
+    
+    import modulesAndPopups.commons.controllers.events.ModulesLoaderEvent;
     import modulesAndPopups.commons.utils.generateUID;
     import modulesAndPopups.commons.views.components.DiagramsView;
     import modulesAndPopups.commons.views.components.ModulesLoaderView;
     import modulesAndPopups.commons.views.components.PopupModuleView;
-    import modulesAndPopups.shell.controllers.events.SomeShellEvent;
-    import modulesAndPopups.shell.views.components.ShellLoaderView;
-
+    import modulesAndPopups.shell.views.components.ModulesCenterView;
+    
     import mx.core.FlexGlobals;
     import mx.managers.PopUpManager;
-
+    
     import robotlegs.bender.bundles.mvcs.Mediator;
     import robotlegs.bender.extensions.viewManager.api.IViewManager;
 
-    public class ShellPopupMediator extends Mediator
+    public class ModuleCenterMediator extends Mediator
     {
         [Inject]
-        public var view:ShellLoaderView;
+        public var view:ModulesCenterView;
 
         [Inject]
         public var viewManager:IViewManager;
 
         override public function initialize():void
         {
-            addViewListener(SomeShellEvent.LOAD_DIAGRAM_POPUP, onLoadDiagramInPopup, SomeShellEvent);
+            addViewListener(ModulesLoaderEvent.LOAD_DIAGRAM_POPUP, onLoadDiagramInPopup, ModulesLoaderEvent);
 
-            addViewListener(SomeShellEvent.LOAD_MODULE_IN_POPUP, onLoadModuleInPopup, SomeShellEvent);
+            addViewListener(ModulesLoaderEvent.LOAD_MODULE_IN_POPUP, onLoadModuleInPopup, ModulesLoaderEvent);
 
-            addViewListener(SomeShellEvent.LOAD_SIMPLE_MODULE, dispatch, SomeShellEvent);
-            addViewListener(SomeShellEvent.UNLOAD_SIMPLE_MODULE, dispatch, SomeShellEvent);
+            addViewListener(ModulesLoaderEvent.LOAD_SIMPLE_MODULE, dispatch, ModulesLoaderEvent);
+            addViewListener(ModulesLoaderEvent.UNLOAD_SIMPLE_MODULE, dispatch, ModulesLoaderEvent);
         }
 
         //============================================================================
         // LOAD A MODULE IN A POPUP WINDOW
         //============================================================================
-        private function onLoadModuleInPopup(event:SomeShellEvent):void
+        private function onLoadModuleInPopup(event:ModulesLoaderEvent):void
         {
             var viewID:String = "ModuleLoader" + "_" + generateUID();
 
@@ -64,7 +64,7 @@ package modulesAndPopups.shell.views.mediators
         //============================================================================
         // DIAGRAMS IN A POPUP - duplicate code == bad!!
         //============================================================================
-        private function onLoadDiagramInPopup(event:SomeShellEvent):void
+        private function onLoadDiagramInPopup(event:ModulesLoaderEvent):void
         {
             var viewID:String = "Diagram" + "_" + generateUID();
 
@@ -87,6 +87,6 @@ package modulesAndPopups.shell.views.mediators
             viewManager.addContainer(titleWindowInstance);
             titleWindowInstance.addElement(diagramsView);
             PopUpManager.addPopUp(titleWindowInstance, FlexGlobals.topLevelApplication as DisplayObject);
-        }				
+        }			
     }
 }

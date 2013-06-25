@@ -6,7 +6,7 @@
     <fx:Script>
         <![CDATA[
             import modulesAndPopups.commons.models.vos.ModuleLoaderVO;
-            import modulesAndPopups.shell.controllers.events.SomeShellEvent;
+            import modulesAndPopups.commons.controllers.events.ModulesLoaderEvent;
 
             import mx.events.ModuleEvent;
 
