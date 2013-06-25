@@ -8,7 +8,7 @@ package modulesAndPopups.shell.views.mediators
     public class ShellModulesMediator extends Mediator
     {
         [Inject]
-        public var view:ShellLoaderView;
+        public var view:ShellLoaderView; 
 
         override public function initialize():void
         {
