@@ -2,30 +2,41 @@
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
          xmlns:s="library://ns.adobe.com/flex/spark"
          xmlns:mx="library://ns.adobe.com/flex/mx">
+    <s:layout>
+        <s:VerticalLayout gap="18"
+                          paddingBottom="3"
+                          paddingLeft="3"
+                          paddingRight="3"
+                          paddingTop="3"/>
+    </s:layout>
+
     <fx:Script>
         <![CDATA[
-            protected function diagram1Button_clickHandler(event:MouseEvent):void
-            {
-                diagramImage.source = "assets/ModuleConectorConfig.png";
-            }
+            import mx.collections.ArrayCollection;
 
-            protected function diagram2Button_clickHandler(event:MouseEvent):void
+            import spark.events.IndexChangeEvent;
+            //============================================================================
+            // in a following demo, the assets will be loaded by a service
+            //============================================================================
+            [Bindable]
+            private var imageSource:ArrayCollection = new ArrayCollection([
+                {label:"diagram 1", url:"ModuleAAndBConnector"},
+                {label:"diagram 2", url:"ModuleAAndBCommunication"},
+                {label:"diagram 3", url:"ModuleConectorConfig"},
+                {label:"diagram 4", url:"ModulesAndShellEvents"}
+                ]);
+
+
+            protected function dropdownlist1_changeHandler(event:IndexChangeEvent):void
             {
-                diagramImage.source = "assets/ModuleConnector.png";
+                diagramImage.source = "assets/" + event.currentTarget.selectedItem.url + ".png";
             }
         ]]>
     </fx:Script>
-    <s:Button x="0"
-              y="8"
-              label="diagram 1"
-              id="diagram1Button"
-              click="diagram1Button_clickHandler(event)"/>
-    <s:Button x="107"
-              y="8"
-              label="diagram 2"
-              id="diagram2Button"
-              click="diagram2Button_clickHandler(event)"/>
-    <s:Image id="diagramImage"
-             x="10"
-             y="39"/>
+    <s:DropDownList width="154"
+                    change="dropdownlist1_changeHandler(event)"
+                    dataProvider="{imageSource}"
+                    labelField="label"
+                    prompt="choose an image"/>
+    <s:Image id="diagramImage"/>
 </s:Group>

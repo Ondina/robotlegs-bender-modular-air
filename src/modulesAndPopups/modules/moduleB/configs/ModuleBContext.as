@@ -11,13 +11,13 @@ package modulesAndPopups.modules.moduleB.configs
     {
         private var context:IContext;
 
-        public function ModuleBContext(rootDisplayObject:DisplayObjectContainer)
+        public function ModuleBContext(view:DisplayObjectContainer)
         {
             trace("ModuleBContext");
             context = new Context()
                 .install(MVCSBundle)
                 .configure(MediatorsConfig, ModuleConnectorConfig)
-                .configure(new ContextView(rootDisplayObject));
+                .configure(new ContextView(view));
         }
     }
 }

@@ -12,11 +12,9 @@ package modulesAndPopups.shell.configs
         private var context:IContext;
 
         //============================================================================
-        //
         // docs: https://github.com/robotlegs/robotlegs-framework/blob/master/src/robotlegs/bender/framework/readme-context.md
         //
         // The "contextView" should always be provided as the final configuration as it may trigger context initialization.
-        //
         //============================================================================
         public function ShellContext(view:DisplayObjectContainer)
         {
