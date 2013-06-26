@@ -1,12 +1,12 @@
 package modulesAndPopups.commons.models.vos
 {
 
-    public class ModuleLoaderVO
+    public class ModulesLoaderVO
     {
         private var _moduleURL:String;
         private var _moduleLoaderID:String;
 
-        public function ModuleLoaderVO()
+        public function ModulesLoaderVO()
         {
         }
 

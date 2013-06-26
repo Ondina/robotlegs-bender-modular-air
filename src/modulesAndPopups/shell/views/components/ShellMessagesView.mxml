@@ -6,7 +6,6 @@
          creationComplete="creationCompleteHandler(event)">
     <fx:Script>
         <![CDATA[
-            import modulesAndPopups.commons.controllers.events.ModulesLoaderEvent;
             import mx.events.FlexEvent;
 
             //============================================================================
@@ -26,7 +25,5 @@
             }
         ]]>
     </fx:Script>
-    <components:MessagesView id="messagesView"
-                             x="0"
-                             y="0"/>
+    <components:MessagesView id="messagesView"/>
 </s:Group>

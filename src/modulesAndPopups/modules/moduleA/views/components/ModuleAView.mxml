@@ -7,7 +7,6 @@
           removedFromStage="removedFromStageHandler(event)">
     <fx:Script>
         <![CDATA[
-            import modulesAndPopups.commons.controllers.events.ModularConnectorEvent;
             import modulesAndPopups.modules.moduleA.configs.ModuleAContext;
 
             import mx.events.FlexEvent;

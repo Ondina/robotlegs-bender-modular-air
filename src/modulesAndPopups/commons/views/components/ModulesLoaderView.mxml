@@ -5,8 +5,7 @@
          removedFromStage="removedFromStageHandler(event)">
     <fx:Script>
         <![CDATA[
-            import modulesAndPopups.commons.models.vos.ModuleLoaderVO;
-            import modulesAndPopups.commons.controllers.events.ModulesLoaderEvent;
+            import modulesAndPopups.commons.models.vos.ModulesLoaderVO;
 
             import mx.events.ModuleEvent;
 
@@ -17,13 +16,10 @@
             //============================================================================
             // LOAD MODULE
             //============================================================================
-            public function onLoadingModule(payload:ModuleLoaderVO):void
+            public function onLoadingModule(payload:ModulesLoaderVO):void
             {
                 if (this.id != payload.moduleLoaderID)
                     return;
-
-                var moduleLoaderVO:ModuleLoaderVO = new ModuleLoaderVO();
-                moduleLoaderVO.moduleLoaderID = payload.moduleLoaderID;
 
                 moduleLoader = new ModuleLoader();
                 moduleLoader.addEventListener(ModuleEvent.ERROR, onModuleError);
@@ -36,7 +32,7 @@
             //============================================================================
             // UNLOAD MODULE
             //============================================================================
-            public function onUnloadingModule(payload:ModuleLoaderVO):void
+            public function onUnloadingModule(payload:ModulesLoaderVO):void
             {
                 if (this.id != payload.moduleLoaderID || !moduleLoader)
                     return;

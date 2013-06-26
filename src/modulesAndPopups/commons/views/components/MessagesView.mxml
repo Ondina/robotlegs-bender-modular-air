@@ -8,14 +8,17 @@
         <![CDATA[
             import modulesAndPopups.commons.controllers.events.ModularConnectorEvent;
             import modulesAndPopups.commons.models.vos.MessagesVO;
-
             import modulesAndPopups.commons.utils.generateUID;
 
             private var _viewID:String;
 
+            //============================================================================
+            // INIT VIEW
+            //============================================================================
             public function init(viewPrefix:String):void
             {
                 sendMessageButton.addEventListener(MouseEvent.CLICK, sendMessageButton_clickHandler);
+
                 viewID = viewPrefix + "_" + generateUID();
                 messageID.text = viewID;
             }
@@ -25,11 +28,11 @@
             //============================================================================
             public function sendMessageButton_clickHandler(event:MouseEvent):void
             {
-                var _messagesVO:MessagesVO = new MessagesVO();
-                _messagesVO.message = sendMessagesInput.text + " - from " + viewID;
-                _messagesVO.viewID = viewID;
+                var messagesVO:MessagesVO = new MessagesVO();
+                messagesVO.message = sendMessagesInput.text + " - from " + viewID;
+                messagesVO.viewID = viewID;
 
-                dispatchEvent(new ModularConnectorEvent(ModularConnectorEvent.VIEW_TO_MEDIATOR_MESSAGE, _messagesVO));
+                dispatchEvent(new ModularConnectorEvent(ModularConnectorEvent.VIEW_TO_MEDIATOR_MESSAGE, messagesVO));
             }
 
             //============================================================================

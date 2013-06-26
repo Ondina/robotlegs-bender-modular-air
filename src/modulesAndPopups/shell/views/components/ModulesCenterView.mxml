@@ -7,14 +7,14 @@
     <fx:Script>
         <![CDATA[
             import modulesAndPopups.commons.controllers.events.ModulesLoaderEvent;
-            import modulesAndPopups.commons.models.vos.ModuleLoaderVO;
+            import modulesAndPopups.commons.models.vos.ModulesLoaderVO;
 
             import mx.events.FlexEvent;
 
-            private var moduleLoaderVO:ModuleLoaderVO = new ModuleLoaderVO();
+            private var moduleLoaderVO:ModulesLoaderVO = new ModulesLoaderVO();
 
             //============================================================================
-            // INIT MESSAGES VIEW & ADD EVENT LISTENERS
+            // ADD EVENT LISTENERS
             //============================================================================
             private function creationCompleteHandler(event:FlexEvent):void
             {
@@ -29,7 +29,16 @@
             //============================================================================
             private function loadModuleInPopupButton_clickHandler(event:MouseEvent):void
             {
-                dispatchEvent(new ModulesLoaderEvent(ModulesLoaderEvent.LOAD_MODULE_IN_POPUP));
+                moduleLoaderVO.moduleURL = "modulesAndPopups/modules/moduleB/views/components/ModuleCView.swf";
+                dispatchEvent(new ModulesLoaderEvent(ModulesLoaderEvent.LOAD_MODULE_IN_POPUP, moduleLoaderVO));
+            }
+
+            //============================================================================
+            // LOAD MODULE CONECTOR CONFIG DIAGRAMS REQUEST
+            //============================================================================
+            protected function loadDiagramButton_clickHandler(event:MouseEvent):void
+            {
+                dispatchEvent(new ModulesLoaderEvent(ModulesLoaderEvent.LOAD_DIAGRAM_IN_POPUP));
             }
 
             //============================================================================
@@ -38,7 +47,8 @@
             private function loadRemoveModuleButton_clickHandler(event:MouseEvent):void
             {
                 setModuleVO(event.currentTarget.id);
-                if (event.currentTarget.currentState == "load")
+
+                if (event.currentTarget.currentState == "default")
                 {
                     dispatchEvent(new ModulesLoaderEvent(ModulesLoaderEvent.LOAD_SIMPLE_MODULE, moduleLoaderVO));
                 }
@@ -46,6 +56,7 @@
                 {
                     dispatchEvent(new ModulesLoaderEvent(ModulesLoaderEvent.UNLOAD_SIMPLE_MODULE, moduleLoaderVO));
                 }
+
                 event.currentTarget.switchStates();
             }
 
@@ -56,22 +67,14 @@
             {
                 if (value == "loadModuleAButton")
                 {
-                    moduleLoaderVO.moduleLoaderID = moduleALoader.id;
+                    moduleLoaderVO.moduleLoaderID = "moduleALoader";
                     moduleLoaderVO.moduleURL = "modulesAndPopups/modules/moduleA/views/components/ModuleAView.swf";
                 }
                 else
                 {
-                    moduleLoaderVO.moduleLoaderID = moduleBLoader.id;
+                    moduleLoaderVO.moduleLoaderID = "moduleBLoader";
                     moduleLoaderVO.moduleURL = "modulesAndPopups/modules/moduleB/views/components/ModuleBView.swf";
                 }
-            }
-
-            //============================================================================
-            // MODULE CONECTOR CONFIG DIAGRAMS
-            //============================================================================
-            protected function loadDiagramButton_clickHandler(event:MouseEvent):void
-            {
-                dispatchEvent(new ModulesLoaderEvent(ModulesLoaderEvent.LOAD_DIAGRAM_POPUP));
             }
         ]]>
     </fx:Script>
@@ -82,18 +85,18 @@
     <s:Group x="345"
              y="0">
         <components:ButtonWithStates id="loadModuleBButton"
-                                     x="336"
+                                     x="330"
                                      y="10"
-                                     labelDefault="load Module_B"
-                                     labelOtherState="remove Module_B"/>
+                                     defaultLabel="load Module_B"
+                                     otherStateLabel="remove Module_B"/>
         <components:ModulesLoaderView id="moduleBLoader"
-                                      x="336"
+                                      x="330"
                                       y="40"/>
         <components:ButtonWithStates id="loadModuleAButton"
                                      x="0"
                                      y="10"
-                                     labelDefault="load Module_A"
-                                     labelOtherState="remove Module_A"/>
+                                     defaultLabel="load Module_A"
+                                     otherStateLabel="remove Module_A"/>
         <components:ModulesLoaderView id="moduleALoader"
                                       x="0"
                                       y="40"/>

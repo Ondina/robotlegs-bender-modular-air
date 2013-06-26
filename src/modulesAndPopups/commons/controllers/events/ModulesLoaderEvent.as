@@ -2,7 +2,7 @@ package modulesAndPopups.commons.controllers.events
 {
     import flash.events.Event;
 
-    import modulesAndPopups.commons.models.vos.ModuleLoaderVO;
+    import modulesAndPopups.commons.models.vos.ModulesLoaderVO;
 
     public class ModulesLoaderEvent extends Event
     {
@@ -10,24 +10,22 @@ package modulesAndPopups.commons.controllers.events
 
         public static const LOAD_SIMPLE_MODULE:String = "loadSimpleModule";
 
-        public static const LOAD_DIAGRAM_POPUP:String = "loadDiagramPopup";
+        public static const LOAD_DIAGRAM_IN_POPUP:String = "loadDiagramInPopup";
 
         public static const UNLOAD_SIMPLE_MODULE:String = "unloadSimpleModule";
 
-        //public static const SIMPLE_MODULE_UNLOADED:String = "simpleModuleUnloaded";
+        private var _moduleLoaderVO:ModulesLoaderVO;
 
-        private var _moduleLoaderVO:ModuleLoaderVO;
-
-        public function ModulesLoaderEvent(type:String, moduleLoaderVO:ModuleLoaderVO = null, bubbles:Boolean = false, cancelable:Boolean = false)
+        public function ModulesLoaderEvent(type:String, moduleLoaderVO:ModulesLoaderVO = null, bubbles:Boolean = false, cancelable:Boolean = false)
         {
             _moduleLoaderVO = moduleLoaderVO;
             super(type, bubbles, cancelable);
         }
 
-        public function get moduleLoaderVO():ModuleLoaderVO
+        public function get moduleLoaderVO():ModulesLoaderVO
         {
             return _moduleLoaderVO;
-			
+
         }
 
         override public function clone():Event

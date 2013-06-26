@@ -1,12 +1,12 @@
 package modulesAndPopups.shell.configs
 {
     import modulesAndPopups.commons.views.components.ModulesLoaderView;
-    import modulesAndPopups.commons.views.components.PopupModuleView;
+    import modulesAndPopups.commons.views.components.PopupView;
     import modulesAndPopups.commons.views.mediators.ModulesLoaderMediator;
-    import modulesAndPopups.commons.views.mediators.PopupModuleMediator;
+    import modulesAndPopups.commons.views.mediators.PopupMediator;
     import modulesAndPopups.shell.views.components.ModulesCenterView;
     import modulesAndPopups.shell.views.components.ShellMessagesView;
-    import modulesAndPopups.shell.views.mediators.ModuleCenterMediator;
+    import modulesAndPopups.shell.views.mediators.ModulesCenterMediator;
     import modulesAndPopups.shell.views.mediators.ShellMessagesMediator;
 
     import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
@@ -19,11 +19,11 @@ package modulesAndPopups.shell.configs
 
         public function configure():void
         {
-            mediatorMap.map(ModulesCenterView).toMediator(ModuleCenterMediator);
+            mediatorMap.map(ModulesCenterView).toMediator(ModulesCenterMediator);
             mediatorMap.map(ShellMessagesView).toMediator(ShellMessagesMediator);
 
             mediatorMap.map(ModulesLoaderView).toMediator(ModulesLoaderMediator);
-            mediatorMap.map(PopupModuleView).toMediator(PopupModuleMediator);
+            mediatorMap.map(PopupView).toMediator(PopupMediator);
         }
     }
 }

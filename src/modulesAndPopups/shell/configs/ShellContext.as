@@ -20,10 +20,10 @@ package modulesAndPopups.shell.configs
         //============================================================================
         public function ShellContext(view:DisplayObjectContainer)
         {
-            trace("ShellConfig.ShellConfig(contextView)");
             context = new Context()
                 .install(MVCSBundle)
-                .configure(MediatorsConfig, ModuleConnectorConfig, new ContextView(view));
+                .configure(MediatorsConfig, ModuleConnectorConfig)
+                .configure(new ContextView(view));
         }
     }
 }

@@ -2,50 +2,50 @@
 <s:Button xmlns:fx="http://ns.adobe.com/mxml/2009"
           xmlns:s="library://ns.adobe.com/flex/spark"
           xmlns:mx="library://ns.adobe.com/flex/mx"
-          label="{labelDefault}"
-          label.remove="{labelOtherState}"
-          width.load="164"
-          height.load="21"
-          width.remove="164"
-          height.remove="21">
+          label="{defaultLabel}"
+          label.otherState="{otherStateLabel}"
+          width.default="164"
+          height.default="21"
+          width.otherState="164"
+          height.otherState="21">
     <s:states>
-        <s:State name="load"/>
-        <s:State name="remove"/>
+        <s:State name="default"/>
+        <s:State name="otherState"/>
     </s:states>
 
     <fx:Script>
         <![CDATA[
-            private var _labelDefault:String;
-            private var _labelOtherState:String;
+            private var _defaultLabel:String;
+            private var _otherStateLabel:String;
 
             [Bindable]
-            public function get labelOtherState():String
+            public function get otherStateLabel():String
             {
-                return _labelOtherState;
+                return _otherStateLabel;
             }
 
-            public function set labelOtherState(value:String):void
+            public function set otherStateLabel(value:String):void
             {
-                _labelOtherState = value;
+                _otherStateLabel = value;
             }
 
             [Bindable]
-            public function get labelDefault():String
+            public function get defaultLabel():String
             {
-                return _labelDefault;
+                return _defaultLabel;
             }
 
-            public function set labelDefault(value:String):void
+            public function set defaultLabel(value:String):void
             {
-                _labelDefault = value;
+                _defaultLabel = value;
             }
 
             public function switchStates():void
             {
-                if (currentState == "load")
-                    currentState = "remove"
+                if (currentState == "default")
+                    currentState = "otherState";
                 else
-                    currentState = "load"
+                    currentState = "default";
             }
         ]]>
     </fx:Script>

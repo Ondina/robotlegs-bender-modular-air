@@ -1,7 +1,7 @@
 package modulesAndPopups.commons.controllers.events
 {
     import flash.events.Event;
-    
+
     import modulesAndPopups.commons.models.vos.MessagesVO;
 
     public class ModularConnectorEvent extends Event

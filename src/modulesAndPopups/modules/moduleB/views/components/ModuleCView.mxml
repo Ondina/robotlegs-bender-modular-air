@@ -8,7 +8,6 @@
           implements="modulesAndPopups.commons.views.components.IModuleView">
     <fx:Script>
         <![CDATA[
-            import modulesAndPopups.commons.controllers.events.ModularConnectorEvent;
             import modulesAndPopups.modules.moduleB.configs.ModuleBContext;
 
             import mx.events.FlexEvent;
